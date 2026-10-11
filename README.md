@@ -30,7 +30,7 @@ pip install pandas
 
 ## Usage
 
-1. Prepare your log file in JSON format (see sample_logs.json for example)
+1. Prepare your log file in JSON Lines format (one JSON object per line) and save it as `security_logs.json` — the included file is a working example
 2. Run the analyzer:
 ```bash
 python log_analyzer.py
