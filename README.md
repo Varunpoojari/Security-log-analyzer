@@ -36,6 +36,27 @@ pip install pandas
 python log_analyzer.py
 ```
 
+## Configuration
+
+An IP address is flagged when it has more than 5 failed login attempts. Change the threshold when you create the analyzer:
+
+```python
+from log_analyzer import SecurityLogAnalyzer
+
+analyzer = SecurityLogAnalyzer(failed_login_threshold=10)
+analyzer.load_log_file("security_logs.json")
+anomalies = analyzer.detect_basic_anomalies()
+```
+
+`detect_basic_anomalies()` re-analyzes the loaded data each time it is called, so calling it again does not duplicate findings. Blank lines in the log file are ignored, and an invalid JSON line is reported with its line number.
+
+## Running the Tests
+
+```bash
+pip install -r requirements-dev.txt
+pytest
+```
+
 ## Sample Log Format
 
 Each log entry should be a JSON object with the following structure:
